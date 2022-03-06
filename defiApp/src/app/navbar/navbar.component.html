@@ -1,50 +1,53 @@
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg text-light bg-dark">
-	<!-- Container wrapper -->
-	<div class="container-fluid">
-	  <!-- Navbar brand --><p>
-	  <a class="navbar-brand text-white" routerLink="home">&nbsp;		<img src="../../assets/mk_egg_icon.png" alt="logo" width="50"/>
-Moody Krows &nbsp;
+  <!-- Container wrapper -->
+  <div class="container-fluid">
+    <!-- Navbar brand -->
+    <p>
+      <a class="navbar-brand text-white" routerLink="home"
+        >&nbsp; <img src="../../assets/mk_egg_icon.png" alt="logo" width="50" />
+        Moody Krows &nbsp;
+      </a>
+    </p>
 
-	  </a></p>
-  
-	  <!-- Toggle button -->
-	  <button 
-		class="navbar-toggler"
-		type="button"
-		(click)="basicNavbar.toggle()"
-		aria-expanded="false"
-		aria-label="Toggle navigation"
-	  >
-		<i class="fas fa-bars"></i>
-	  </button>
-  
-	  <!-- Collapsible wrapper -->
-	  <div
-		class="collapse navbar-collapse"
-		id="navbarSupportedContent"
-		mdbCollapse
-		#basicNavbar="mdbCollapse"
-	  >
-		<!-- Left links -->
-		<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-			<li class="nav-item">
-				<a class="nav-link text-white" routerLink="mint">Mint</a>
-			  </li>	
-			  	  <li class="nav-item">
-				<a class="nav-link text-white" routerLink="team">Team</a>
-			  </li>	
-		  <li class="nav-item">
-			<a class="nav-link text-white" routerLink="roadmap">RoadMap</a>
-		  </li>
+    <!-- Toggle button -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      (click)="basicNavbar.toggle()"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <i class="fas fa-bars"></i>
+    </button>
 
-		</ul>
-		<!-- Left links -->
-  
-	
-	  </div>
-	  <!-- Collapsible wrapper -->
-	</div>
-	<!-- Container wrapper -->
-  </nav>
-  <!-- Navbar -->
+    <!-- Collapsible wrapper -->
+    <div
+      class="collapse navbar-collapse"
+      id="navbarSupportedContent"
+      mdbCollapse
+      #basicNavbar="mdbCollapse"
+    >
+      <!-- Left links -->
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link text-white" routerLink="murderGang"
+            ><h5>Your Murder</h5></a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" routerLink="team"><h5>Saviors</h5></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" routerLink="roadmap"
+            ><h5>Future Endeavors</h5></a
+          >
+        </li>
+      </ul>
+      <!-- Left links -->
+    </div>
+    <!-- Collapsible wrapper -->
+  </div>
+  <!-- Container wrapper -->
+</nav>
+<!-- Navbar -->
