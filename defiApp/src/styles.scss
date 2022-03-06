@@ -1,8 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~mdb-angular-ui-kit/assets/scss/mdb.scss";
 body {
-  background-color: black;
   text-align: center;
+  background-image: url(./assets/MK_BG2.png);
+  background-size: cover;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  overflow-y: scroll;
 }
 .center-div {
   height: 75vh;
@@ -11,8 +15,8 @@ body {
   align-items: center;
 }
 
-.team-div {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-}
+// .team-div {
+//   height: 100vh;
+//   display: flex;
+//   justify-content: center;
+// }
