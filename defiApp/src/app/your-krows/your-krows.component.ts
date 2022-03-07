@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
 // import ImmutableXClient as ImmutableXClient from '@imtbl/imx-sdk'
 //import * as ImmutableXClient from '@imtbl/imx-sdk'
 
-import Web3 from 'web3';
+const web3 = require('../../app/web3.js')
 @Component({
   selector: 'app-your-krows',
   templateUrl: './your-krows.component.html',
@@ -16,6 +16,9 @@ export class YourKrowsComponent implements OnInit {
   constructor() { }
 
   async ngOnInit(): Promise<void> {
+    this.accounts = await web3.eth.getAccounts();
+    console.log(this.accounts);
+
     // this.link = new Link(this.linkAddress);
     // this.client = await ImmutableXClient.build({ publicApiUrl: this.apiAddress });
   }
@@ -25,6 +28,7 @@ export class YourKrowsComponent implements OnInit {
   krowsArray = [];
   linkAddress = 'https://link.x.immutable.com';
   apiAddress = 'https://api.x.immutable.com/v1';
+  accounts = [];
   // link: Link = new Link;
   // client!: ImmutableXClient;
 

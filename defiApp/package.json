@@ -8,6 +8,13 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
+  "browser": {
+    "os": "os-browserify/browser",
+    "https": "https-browserify",
+    "http": "stream-http",
+    "crypto": "crypto-browserify",
+    "stream": "stream-browserify"
+  },
   "private": true,
   "dependencies": {
     "@angular/animations": "~13.2.0",
