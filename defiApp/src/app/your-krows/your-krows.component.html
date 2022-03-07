@@ -13,3 +13,55 @@
     </div>
   </div>
 </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 mx-auto my-6" *ngFor="let card of krowsArray">
+      <div class="card">
+        <!-- <mdb-card-img [src]="card.img" alt="Card image cap"> </mdb-card-img> -->
+        <div class="card-body">
+          <!-- <mdb-card-title>
+            <h4>{{ card.title }}</h4>
+          </mdb-card-title> -->
+          <img
+            src="{{ card.image_url }}"
+            alt="krow banner"
+            width="150"
+            height="150"
+          />
+
+          <h6 class="card-text">
+            ID: {{ card.name }}
+            <br />
+            Accessorie: {{ card.Accessories }}
+            <br />
+            Background: {{ card.Backgrounds }}
+            <br />
+            Clothes: {{ card.Clothes }}
+            <br />
+            Face: {{ card.Face }}
+            <br />
+            Hat: {{ card.Hat }}
+            <br />
+            KrowBase: {{ card.KrowBase }}
+            <br />
+
+            <div *ngIf="card.isForSale; else elseblock">
+              <h6 style="color: crimson">
+                Currently for sale, you sure you want to do that?
+              </h6>
+            </div>
+            <ng-template #elseblock>
+              <div>
+                <h6 style="color: green">Not for sale your a real one!</h6>
+              </div>
+            </ng-template>
+          </h6>
+          <!-- <button class="favorite styled">test</button> -->
+          <br />
+        </div>
+      </div>
+      <br />
+    </div>
+  </div>
+</div>

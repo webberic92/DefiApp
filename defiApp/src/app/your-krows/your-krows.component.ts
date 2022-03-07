@@ -25,10 +25,6 @@ export class YourKrowsComponent implements OnInit {
     this.client = await ImmutableXClient.build({ publicApiUrl: this.apiAddress });
   }
 
-
-
-
-
   errorMessage = '';
   loading = false;
   krowsArray: any[] = [];
@@ -37,13 +33,11 @@ export class YourKrowsComponent implements OnInit {
   account = '';
   link: Link = new Link;
   client!: ImmutableXClient;
-
-
-
+  krowsForSaleSet = new Set<string>();
 
   async getAccounts() {
-
     interface Ikrow {
+      Name: string,
       Accessories: string,
       Backgrounds: string,
       Clothes: string,
@@ -54,20 +48,24 @@ export class YourKrowsComponent implements OnInit {
       name: string,
       isForSale: boolean
     }
-
     await this.getWeb3accounts.openMetamask().then(async (resp: any) => {
       this.account = (resp)
-      console.log("resp " + resp)
-
-      console.log("this.account " + JSON.stringify(this.account))
     })
-
     var response = await this.client.getAssets({ collection: '0x5f32923175e13713242b3ddd632bdee82ab5f509', user: this.account });
-    //console.log(response.result);
+    var ordersRequests = await this.client.getOrders({ status: ImmutableOrderStatus.active, sell_token_address: '0x5f32923175e13713242b3ddd632bdee82ab5f509', user: this.account });
+    var tempOrder = JSON.parse(JSON.stringify(ordersRequests));
+    for (var i = 0; i < tempOrder.result.length; i++) {
+      this.krowsForSaleSet.add("#" + tempOrder.result[i].sell.data.token_id)
+    }
     for (var i = 0; i < response.result.length; i++) {
-      // console.log(JSON.parse(JSON.stringify(response.result[i].metadata)))
+      var tempOrder = JSON.parse(JSON.stringify(ordersRequests));
       const tempkrow = JSON.parse(JSON.stringify(response.result[i].metadata))
+      var krowISForSaleBool = false;
+      if (this.krowsForSaleSet.has(tempkrow.name)) {
+        krowISForSaleBool = true;
+      }
       const krow: Ikrow = {
+        Name: tempkrow.name,
         Accessories: tempkrow.Accessories,
         Backgrounds: tempkrow.Backgrounds,
         Clothes: tempkrow.Clothes,
@@ -76,34 +74,9 @@ export class YourKrowsComponent implements OnInit {
         KrowBase: tempkrow["Krow Base"],
         image_url: tempkrow.image_url,
         name: tempkrow.name,
-        isForSale: false
+        isForSale: krowISForSaleBool
       }
       this.krowsArray.push(krow);
-
     }
-    console.log(this.krowsArray)
-    //   var krow = {
-
-    //     Accessories: response.result[i].metadata.Accessories instanceof String,
-    //     // Backgrounds: response.result[i].metadata.
-    //     // Clothes: "None"
-    //     // Face: "Cyclops"
-    //     // Hat: "Beanie"
-    //     // Krow Base: "Cheetah Print"
-    //     // image_url: "https://ipfs.io/ipfs/QmNoYD5bZjhqwRz5gm2TZSaMjMP7Kt38KDGmvKRb7yeboy"
-    //     // name: "#3147"
-
-    //     isForSale: false
-    //   }
-
-
-
-
-    // var ordersRequest = await this.client.getOrders({ status: ImmutableOrderStatus.active, sell_token_address: '0x5f32923175e13713242b3ddd632bdee82ab5f509', user: this.account });
-    // console.log('ordersRequest ' + JSON.stringify(ordersRequest));
-    // if (response.result[i].name == "#" + ordersRequest.result[0].sell.data.token_id) {
-    //   response.result[i].isForSale = true;
-    // }
-    //}
   }
 }
