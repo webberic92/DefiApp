@@ -2,10 +2,9 @@ import { Component, OnInit } from '@angular/core';
 // import { ImmutableXClient, Link } from '@imtbl/imx-sdk';
 // import { ImmutableXClient } from "@imtbl/imx-sdk";
 // import { Link } from '@imtbl/imx-sdk';
-// import ImmutableXClient as ImmutableXClient from '@imtbl/imx-sdk'
-//import * as ImmutableXClient from '@imtbl/imx-sdk'
+// import * as ImmutableXClient from '@imtbl/imx-sdk';
+import { getWeb3accounts } from '../get-web3-accounts.service';
 
-const web3 = require('../../app/web3.js')
 @Component({
   selector: 'app-your-krows',
   templateUrl: './your-krows.component.html',
@@ -13,11 +12,9 @@ const web3 = require('../../app/web3.js')
 })
 export class YourKrowsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private getWeb3accounts: getWeb3accounts) { }
 
   async ngOnInit(): Promise<void> {
-    this.accounts = await web3.eth.getAccounts();
-    console.log(this.accounts);
 
     // this.link = new Link(this.linkAddress);
     // this.client = await ImmutableXClient.build({ publicApiUrl: this.apiAddress });
@@ -32,5 +29,10 @@ export class YourKrowsComponent implements OnInit {
   // link: Link = new Link;
   // client!: ImmutableXClient;
 
+  getAccounts() {
+    this.getWeb3accounts.openMetamask().then((resp: any) => {
+      console.log(resp)
 
+    })
+  }
 }
