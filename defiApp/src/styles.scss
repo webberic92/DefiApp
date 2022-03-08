@@ -3,10 +3,11 @@
 body {
   text-align: center;
   background-image: url(./assets/MK_BG2.png);
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
   background-size: cover;
-  background-size: 100%;
-  background-repeat: no-repeat;
-  overflow-y: scroll;
+  background-attachment: fixed;
 }
 .center-div {
   padding: 1%;
@@ -58,12 +59,32 @@ h2,
 h3,
 h4,
 h5,
-h6,
+h6 {
+  font-family: BalonkuRegular;
+  font-size: 1em;
+}
+
 button {
   font-family: BalonkuRegular;
 }
 
 p {
   font-family: sunnySpells;
-  font-size: 200%;
+  font-size: 1em;
+}
+
+#page-container {
+  position: relative;
+  min-height: 100vh;
+}
+
+#content-wrap {
+  padding-bottom: 2.5rem; /* Footer height */
+}
+
+#footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 2.5rem; /* Footer height */
 }
