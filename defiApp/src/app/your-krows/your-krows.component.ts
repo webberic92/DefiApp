@@ -26,7 +26,8 @@ export class YourKrowsComponent implements OnInit {
     this.client = await ImmutableXClient.build({ publicApiUrl: this.apiAddress });
   }
 
-  errorMessage = '';
+  babyMessage = '';
+  adultMessage = '';
   loading = false;
   krowsArray: any[] = [];
   linkAddress = 'https://link.x.immutable.com';
@@ -37,7 +38,10 @@ export class YourKrowsComponent implements OnInit {
   krowsForSaleSet = new Set<string>();
   loadedKrowIsAdult: boolean = true;
 
+
   async getAdultKrowAccount() {
+    this.clear()
+
     interface Ikrow {
       Name: string,
       Accessories: string,
@@ -54,40 +58,50 @@ export class YourKrowsComponent implements OnInit {
       this.account = (resp)
     })
     var response = await this.client.getAssets({ collection: '0x5f32923175e13713242b3ddd632bdee82ab5f509', user: this.account });
-    var ordersRequests = await this.client.getOrders({ status: ImmutableOrderStatus.active, sell_token_address: '0x5f32923175e13713242b3ddd632bdee82ab5f509', user: this.account });
-    var tempOrder = JSON.parse(JSON.stringify(ordersRequests));
-    for (var i = 0; i < tempOrder.result.length; i++) {
-      this.krowsForSaleSet.add("#" + tempOrder.result[i].sell.data.token_id)
-    }
-    for (var i = 0; i < response.result.length; i++) {
+    if (response.result.length != 0) {
+      var ordersRequests = await this.client.getOrders({ status: ImmutableOrderStatus.active, sell_token_address: '0x5f32923175e13713242b3ddd632bdee82ab5f509', user: this.account });
       var tempOrder = JSON.parse(JSON.stringify(ordersRequests));
-      const tempkrow = JSON.parse(JSON.stringify(response.result[i].metadata))
-      var krowISForSaleBool = false;
-      if (this.krowsForSaleSet.has(tempkrow.name)) {
-        krowISForSaleBool = true;
+      for (var i = 0; i < tempOrder.result.length; i++) {
+        this.krowsForSaleSet.add("#" + tempOrder.result[i].sell.data.token_id)
       }
-      const krow: Ikrow = {
-        Name: tempkrow.name,
-        Accessories: tempkrow.Accessories,
-        Backgrounds: tempkrow.Backgrounds,
-        Clothes: tempkrow.Clothes,
-        Face: tempkrow.Face,
-        Hat: tempkrow.Hat,
-        KrowBase: tempkrow["Krow Base"],
-        image_url: tempkrow.image_url,
-        name: tempkrow.name,
-        isForSale: krowISForSaleBool
+      for (var i = 0; i < response.result.length; i++) {
+        var tempOrder = JSON.parse(JSON.stringify(ordersRequests));
+        const tempkrow = JSON.parse(JSON.stringify(response.result[i].metadata))
+        var krowISForSaleBool = false;
+        if (this.krowsForSaleSet.has(tempkrow.name)) {
+          krowISForSaleBool = true;
+        }
+        const krow: Ikrow = {
+          Name: tempkrow.name,
+          Accessories: tempkrow.Accessories,
+          Backgrounds: tempkrow.Backgrounds,
+          Clothes: tempkrow.Clothes,
+          Face: tempkrow.Face,
+          Hat: tempkrow.Hat,
+          KrowBase: tempkrow["Krow Base"],
+          image_url: tempkrow.image_url,
+          name: tempkrow.name,
+          isForSale: krowISForSaleBool
+        }
+        this.krowsArray.push(krow);
+        this.loadedKrowIsAdult = true;
       }
-      this.krowsArray.push(krow);
-      this.loadedKrowIsAdult = true;
     }
+    else {
+      this.adultMessage = 'No Adult Krows Found!'
+    }
+
+
   }
 
   clear() {
     this.krowsArray = [];
+    this.babyMessage = '';
+    this.adultMessage = '';
   }
 
   async getBabyKrowAccount() {
+    this.clear()
     interface Ikrow {
       Name: string,
       Hat: string,
@@ -104,31 +118,37 @@ export class YourKrowsComponent implements OnInit {
       this.account = (resp)
     })
     var response = await this.client.getAssets({ collection: '0xd595e82f016843bb15e469eedc357fda27a71a6b', user: this.account });
-    var ordersRequests = await this.client.getOrders({ status: ImmutableOrderStatus.active, sell_token_address: '0xd595e82f016843bb15e469eedc357fda27a71a6b', user: this.account });
-    var tempOrder = JSON.parse(JSON.stringify(ordersRequests));
-    for (var i = 0; i < tempOrder.result.length; i++) {
-      this.krowsForSaleSet.add("#" + tempOrder.result[i].sell.data.token_id)
-    }
-    for (var i = 0; i < response.result.length; i++) {
+    if (response.result.length != 0) {
+
+      var ordersRequests = await this.client.getOrders({ status: ImmutableOrderStatus.active, sell_token_address: '0xd595e82f016843bb15e469eedc357fda27a71a6b', user: this.account });
       var tempOrder = JSON.parse(JSON.stringify(ordersRequests));
-      const tempkrow = JSON.parse(JSON.stringify(response.result[i].metadata))
-      var krowISForSaleBool = false;
-      if (this.krowsForSaleSet.has(tempkrow.name)) {
-        krowISForSaleBool = true;
+      for (var i = 0; i < tempOrder.result.length; i++) {
+        this.krowsForSaleSet.add("#" + tempOrder.result[i].sell.data.token_id)
       }
-      const krow: Ikrow = {
-        Name: tempkrow.name,
-        Hat: tempkrow.Hat,
-        Bugs: tempkrow.Bugs,
-        Toys: tempkrow.Toys,
-        Shell: tempkrow.Shell,
-        KrowBase: tempkrow["Krow Base"],
-        Backgrounds: tempkrow.Backgrounds,
-        image_url: tempkrow.image_url,
-        isForSale: krowISForSaleBool
+      for (var i = 0; i < response.result.length; i++) {
+        var tempOrder = JSON.parse(JSON.stringify(ordersRequests));
+        const tempkrow = JSON.parse(JSON.stringify(response.result[i].metadata))
+        var krowISForSaleBool = false;
+        if (this.krowsForSaleSet.has(tempkrow.name)) {
+          krowISForSaleBool = true;
+        }
+        const krow: Ikrow = {
+          Name: tempkrow.name,
+          Hat: tempkrow.Hat,
+          Bugs: tempkrow.Bugs,
+          Toys: tempkrow.Toys,
+          Shell: tempkrow.Shell,
+          KrowBase: tempkrow["Krow Base"],
+          Backgrounds: tempkrow.Backgrounds,
+          image_url: tempkrow.image_url,
+          isForSale: krowISForSaleBool
+        }
+        this.krowsArray.push(krow);
+        this.loadedKrowIsAdult = false;
+
       }
-      this.krowsArray.push(krow);
-      this.loadedKrowIsAdult = false;
+    } else {
+      this.babyMessage = 'No Baby Krows Found!'
 
     }
   }

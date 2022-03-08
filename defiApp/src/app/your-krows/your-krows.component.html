@@ -33,6 +33,76 @@
           Baby Murder
         </button>
       </div>
+      <!-- No Krows Found -->
+      <div *ngIf="adultMessage">
+        <br />
+        <h3 style="color: red; font-size: 2em">
+          <u>{{ adultMessage }}</u>
+        </h3>
+        You can join our murder by purchasing a baby krow on ImmutableX or
+        TokenTrove below.
+        <div class="center-div">
+          <div class="col-sm-3">
+            <br />
+
+            <a
+              href="https://market.immutable.com/assets?collection=0x5f32923175e13713242b3ddd632bdee82ab5f509"
+            >
+              <img
+                src="../../assets/imxlogo.PNG"
+                alt="etherscan"
+                style="border-radius: 75%"
+                height="50px"
+                width="50px"
+              />
+            </a>
+          </div>
+          <div class="col-sm-3">
+            <br />
+            <a href="https://tokentrove.com/collection/MoodyKrows">
+              <img
+                src="../../assets/tokentrovelogo.PNG"
+                alt="etherscan"
+                style="border-radius: 75%"
+                height="50px"
+                width="50px"
+              />
+            </a>
+          </div>
+        </div>
+        <button class="favorite styled" type="button" (click)="clear()">
+          Clear
+        </button>
+      </div>
+      <div *ngIf="babyMessage">
+        <br />
+        <h3 style="color: red; font-size: 2em">
+          <u>{{ babyMessage }}</u>
+        </h3>
+        <br />
+        <p>
+          You can join our murder by purchasing a baby krow on ImmutableX below.
+        </p>
+        <div class="center-div">
+          <div class="col-sm-3">
+            <a
+              href="https://market.immutable.com/assets?collection=0xd595e82f016843bb15e469eedc357fda27a71a6b"
+            >
+              <img
+                src="../../assets/imxlogo.PNG"
+                alt="etherscan"
+                style="border-radius: 75%"
+                height="50px"
+                width="50px"
+              />
+            </a>
+          </div>
+        </div>
+        <button class="favorite styled" type="button" (click)="clear()">
+          Clear
+        </button>
+      </div>
+      <!-- No Krows Found -->
     </div>
   </div>
 </div>
