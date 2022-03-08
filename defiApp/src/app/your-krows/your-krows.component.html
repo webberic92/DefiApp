@@ -1,69 +1,166 @@
-<br />
-<br />
 <div class="center-div">
   <div class="card">
     <div class="center-img">
-      <img src="../../assets/MK_Banner.png" alt="krow banner" />
+      <img
+        src="../../assets/whitebanner.png"
+        alt="krow banner"
+        height="20%"
+        width="25%"
+      />
     </div>
     <div class="card-body">
       <h3 class="card-text">Lets View Your murder!</h3>
       <br />
-
-      <button class="favorite styled" type="button" (click)="getAccounts()">
-        View Murder
-      </button>
+      <div *ngIf="krowsArray.length != 0">
+        <button class="favorite styled" type="button" (click)="clear()">
+          Clear
+        </button>
+      </div>
+      <div *ngIf="krowsArray.length == 0">
+        <button
+          class="favorite styled"
+          type="button"
+          (click)="getAdultKrowAccount()"
+        >
+          Adult Murder
+        </button>
+        &nbsp;
+        <button
+          class="favorite styled"
+          type="button"
+          (click)="getBabyKrowAccount()"
+        >
+          Baby Murder
+        </button>
+      </div>
     </div>
   </div>
 </div>
 
-<div class="container">
+<div
+  *ngIf="krowsArray.length != 0"
+  class="container"
+  style="background-color: bisque"
+>
   <div class="row">
-    <div class="col-md-4 mx-auto my-6" *ngFor="let card of krowsArray">
-      <div class="card">
-        <div class="card-body">
-          <h3 style="color: deepskyblue">
-            <u>ID: {{ card.name }}</u>
-          </h3>
-          <img
-            src="{{ card.image_url }}"
-            alt="krow pic"
-            width="250"
-            height="250"
-            style="border-radius: 50%"
-          />
+    <div class="col-md-2 my-4" *ngFor="let card of krowsArray">
+      <!-- Adult Krow Render -->
+      <div *ngIf="loadedKrowIsAdult">
+        <div
+          class="card"
+          style="
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+          "
+        >
+          <div class="card-body">
+            <h3 style="color: deepskyblue; font-size: 2em">
+              <u>ID: {{ card.name }}</u>
+            </h3>
+            <img
+              src="{{ card.image_url }}"
+              alt="krow pic"
+              width="150"
+              height="150"
+              style="border-radius: 50%"
+            />
 
-          <div class="card-text">
-            <p>
-              Accessorie: {{ card.Accessories }}
-              <br />
-              Background: {{ card.Backgrounds }}
-              <br />
-              Clothes: {{ card.Clothes }}
-              <br />
-              Face: {{ card.Face }}
-              <br />
-              Hat: {{ card.Hat }}
-              <br />
-              KrowBase: {{ card.KrowBase }}
-              <br />
-            </p>
-          </div>
-
-          <div *ngIf="card.isForSale; else elseblock">
-            <h4 style="color: crimson">
-              <u> Currently for sale, you sure you want to do that?</u>
-            </h4>
-          </div>
-          <ng-template #elseblock>
-            <div>
-              <h4 style="color: green"><u>Not for sale your a real one!</u></h4>
-              <br />
+            <div class="card-text">
+              <p>
+                Accessorie: {{ card.Accessories }}
+                <br />
+                Background: {{ card.Backgrounds }}
+                <br />
+                Clothes: {{ card.Clothes }}
+                <br />
+                Face: {{ card.Face }}
+                <br />
+                Hat: {{ card.Hat }}
+                <br />
+                KrowBase: {{ card.KrowBase }}
+                <br />
+              </p>
             </div>
-          </ng-template>
-          <!-- <button class="favorite styled">test</button> -->
+
+            <div *ngIf="card.isForSale; else elseblock">
+              <h4 style="color: crimson">
+                <u> Currently for sale, you sure you want to do that?</u>
+              </h4>
+            </div>
+            <ng-template #elseblock>
+              <div>
+                <h4 style="color: green">
+                  <u>Not for sale your a real one!</u>
+                </h4>
+                <br />
+              </div>
+            </ng-template>
+          </div>
         </div>
       </div>
-      <br />
+      <!-- ADult Krow Render -->
+
+      <!-- Baby Krow Render -->
+      <div *ngIf="!loadedKrowIsAdult">
+        <div
+          class="card"
+          style="
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+          "
+        >
+          <div class="card-body">
+            <h3 style="color: deepskyblue; font-size: 2em">
+              <u>ID: {{ card.Name }}</u>
+            </h3>
+            <img
+              src="{{ card.image_url }}"
+              alt="krow pic"
+              width="150"
+              height="150"
+              style="border-radius: 50%"
+            />
+
+            <div class="card-text">
+              <p>
+                Hat: {{ card.Hat }}
+                <br />
+                Bugs: {{ card.Bugs }}
+                <br />
+                Toys: {{ card.Toys }}
+                <br />
+                Shell: {{ card.Shell }}
+                <br />
+                KrowBase: {{ card.KrowBase }}
+                <br />
+                Backgrounds: {{ card.Backgrounds }}
+                <br />
+              </p>
+            </div>
+
+            <div *ngIf="card.isForSale; else elseblock">
+              <h4 style="color: crimson">
+                <u> Currently for sale, you sure you want to do that?</u>
+              </h4>
+            </div>
+            <ng-template #elseblock>
+              <div>
+                <h4 style="color: green">
+                  <u>Not for sale your a real one!</u>
+                </h4>
+                <br />
+              </div>
+            </ng-template>
+          </div>
+          <!-- Baby Krow Render -->
+        </div>
+      </div>
     </div>
+    <br />
+    <br />
   </div>
 </div>

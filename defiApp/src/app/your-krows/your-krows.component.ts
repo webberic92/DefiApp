@@ -1,3 +1,4 @@
+import { Template } from '@angular/compiler/src/render3/r3_ast';
 import { Component, OnInit } from '@angular/core';
 // import { ImmutableXClient, Link } from '@imtbl/imx-sdk';
 import { ImmutableOrderStatus, ImmutableXClient } from "@imtbl/imx-sdk";
@@ -34,8 +35,9 @@ export class YourKrowsComponent implements OnInit {
   link: Link = new Link;
   client!: ImmutableXClient;
   krowsForSaleSet = new Set<string>();
+  loadedKrowIsAdult: boolean = true;
 
-  async getAccounts() {
+  async getAdultKrowAccount() {
     interface Ikrow {
       Name: string,
       Accessories: string,
@@ -77,6 +79,60 @@ export class YourKrowsComponent implements OnInit {
         isForSale: krowISForSaleBool
       }
       this.krowsArray.push(krow);
+      this.loadedKrowIsAdult = true;
+    }
+  }
+
+  clear() {
+    this.krowsArray = [];
+  }
+
+  async getBabyKrowAccount() {
+    interface Ikrow {
+      Name: string,
+      Hat: string,
+      Bugs: string,
+      Toys: string,
+      Shell: string,
+      KrowBase: string,
+      image_url: string,
+      Backgrounds: string,
+      isForSale: boolean
+
+    }
+    await this.getWeb3accounts.openMetamask().then(async (resp: any) => {
+      this.account = (resp)
+    })
+    var response = await this.client.getAssets({ collection: '0xd595e82f016843bb15e469eedc357fda27a71a6b', user: this.account });
+    var ordersRequests = await this.client.getOrders({ status: ImmutableOrderStatus.active, sell_token_address: '0xd595e82f016843bb15e469eedc357fda27a71a6b', user: this.account });
+    var tempOrder = JSON.parse(JSON.stringify(ordersRequests));
+    for (var i = 0; i < tempOrder.result.length; i++) {
+      this.krowsForSaleSet.add("#" + tempOrder.result[i].sell.data.token_id)
+    }
+    for (var i = 0; i < response.result.length; i++) {
+      var tempOrder = JSON.parse(JSON.stringify(ordersRequests));
+      const tempkrow = JSON.parse(JSON.stringify(response.result[i].metadata))
+      var krowISForSaleBool = false;
+      if (this.krowsForSaleSet.has(tempkrow.name)) {
+        krowISForSaleBool = true;
+      }
+      const krow: Ikrow = {
+        Name: tempkrow.name,
+        Hat: tempkrow.Hat,
+        Bugs: tempkrow.Bugs,
+        Toys: tempkrow.Toys,
+        Shell: tempkrow.Shell,
+        KrowBase: tempkrow["Krow Base"],
+        Backgrounds: tempkrow.Backgrounds,
+        image_url: tempkrow.image_url,
+        isForSale: krowISForSaleBool
+      }
+      this.krowsArray.push(krow);
+      this.loadedKrowIsAdult = false;
+
     }
   }
 }
+
+
+

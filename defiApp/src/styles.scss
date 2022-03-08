@@ -1,7 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~mdb-angular-ui-kit/assets/scss/mdb.scss";
 body {
-  text-align: center;
   background-image: url(./assets/MK_BG2.png);
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -14,6 +13,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
 }
 
 .styled {
@@ -84,6 +84,7 @@ p {
 
 #footer {
   position: absolute;
+  left: auto;
   bottom: 0;
   width: 100%;
   height: 2.5rem; /* Footer height */
