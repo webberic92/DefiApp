@@ -57,3 +57,8 @@ import 'zone.js';  // Included with Angular CLI.
 (window as any).global = window;
 global.Buffer = global.Buffer || require('buffer').Buffer;
 global.process = require('process');
+require.resolve("https-browserify");
+require.resolve("url/");
+require.resolve("os-browserify/browser");
+require.resolve("assert/");
+require.resolve("stream-browserify");
