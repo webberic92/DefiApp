@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+// - Either `BrowserAnimationsModule` or `NoopAnimationsModule` are imported in your application.
 // import Web3 from 'web3';
 // import { ImmutableXClient, Link } from '@imtbl/imx-sdk';
 import { AppRoutingModule } from './app-routing.module';
@@ -37,6 +38,7 @@ import { YourKrowsComponent } from './your-krows/your-krows.component';
     HomeComponent,
     YourKrowsComponent],
   imports: [
+
     BrowserModule,
     AppRoutingModule,
     // ImmutableXClient,

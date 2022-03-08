@@ -24,7 +24,7 @@ body {
   color: #fff;
   text-shadow: 1px 1px 1px #000;
   border-radius: 10px;
-  background-color: rgb(0, 194, 220);
+  background-color: #00acee;
   background-image: linear-gradient(
     to top left,
     rgba(0, 0, 0, 0.2),
@@ -36,7 +36,7 @@ body {
 }
 
 .styled:hover {
-  background-color: rgb(0, 205, 220);
+  background-color: #3b5998;
 }
 
 .styled:active {
@@ -44,8 +44,26 @@ body {
     inset 2px 2px 3px rgba(0, 0, 0, 0.6);
 }
 
-// .team-div {
-//   height: 100vh;
-//   display: flex;
-//   justify-content: center;
-// }
+@font-face {
+  font-family: BalonkuRegular;
+  src: url("./assets/balonku-font/BalonkuRegular-la1w.otf");
+}
+
+@font-face {
+  font-family: sunnySpells;
+  src: url("./assets/sunny-spells-font/SunnyspellsRegular-MV9ze.otf");
+}
+
+h2,
+h3,
+h4,
+h5,
+h6,
+button {
+  font-family: BalonkuRegular;
+}
+
+p {
+  font-family: sunnySpells;
+  font-size: 200%;
+}

@@ -1,16 +1,23 @@
 <div class="center-div">
-  <div class="card">
+  <div
+    class="card"
+    style="background-color: white; border: 4mm ridge #00acee; max-width: 65%"
+  >
     <div class="center-img">
       <br />
-      <img src="../../assets/MK_Banner.png" alt="krow banner" />
+      <img
+        src="../../assets/whitebanner.png"
+        alt="krow banner"
+        height="100px"
+        width="500px"
+      />
     </div>
     <div class="card-body">
       <h3 class="card-text">
-        Welcome to the all new Krowmunnity Driven webiste!
+        <u> Welcome to the all new Krowmunnity Driven webiste! </u>
       </h3>
       <br />
       <p>We are glad your are back!</p>
-      <br /><br />
       <p>
         This website is 100% Krowmunnity driven and ran by holders of Moody
         Krows.
@@ -19,46 +26,209 @@
       <p>Let the adventure begin...</p>
 
       <br />
-
-      <div class="row">
-        <div class="col-xl-4">
-          <div class="card">
-            <img
-              src="../../assets/ogkrowcollection.PNG"
-              width="300"
-              height="300"
-              alt="krow banner"
-            />
-
-            https://etherscan.io/address/0x5F32923175e13713242B3DdD632bdEE82aB5F509
-          </div>
-        </div>
-        <div class="col-xl-4">
-          <div class="card">
-            <img
-              src="../../assets/babykrowcollection.PNG"
-              width="300"
-              height="300"
-              alt="krow banner"
-            />
-
-            https://etherscan.io/address/0xd595e82f016843bb15e469eedc357fda27a71a6b
-          </div>
-        </div>
-      </div>
       <br />
-
-      <button class="favorite styled" type="button" (click)="murderGang()">
+      <br />
+      <button
+        class="favorite styled"
+        type="button"
+        style="height: 100px; width: 350px"
+        (click)="murderGang()"
+      >
         View Murder
       </button>
       &nbsp;
-      <button class="favorite styled" type="button" (click)="saviors()">
+      <button
+        class="favorite styled"
+        type="button"
+        style="height: 100px; width: 350px"
+        (click)="saviors()"
+      >
         View Saviors</button
       >&nbsp;
-      <button class="favorite styled" type="button" (click)="roadmap()">
+      <button
+        class="favorite styled"
+        type="button"
+        style="height: 100px; width: 350px"
+        (click)="roadmap()"
+      >
         View Roadmap
       </button>
-      &nbsp;
+      <br />
+      <br />
+      <br />
+      <br />
+      <div
+        class="row"
+        style="display: flex; align-items: center; justify-content: center"
+      >
+        <!-- OG KROW CARD -->
+        <div class="col-xl-3">
+          <div class="card" style="background-color: white; max-width: 75%">
+            <div class="center-div">
+              <img
+                class="card-img-top"
+                src="../../assets/ogkrowcollection.PNG"
+                alt="krow og"
+                width="350"
+                height="450"
+                style="border-radius: 50%"
+              />
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Parent Collection</h5>
+              <p class="card-text">
+                First 10,000 PFP collection on IMX. Sold out in minutes!
+                Abandoned by owner but community still strong!
+                <br />
+              </p>
+              <hr />
+
+              <div
+                class="row"
+                style="
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                "
+              >
+                <div class="col-2">
+                  <br />
+                  <a
+                    href="https://etherscan.io/address/0x5F32923175e13713242B3DdD632bdEE82aB5F509"
+                  >
+                    <img
+                      src="../../assets/etherscan.PNG"
+                      alt="etherscan"
+                      style="border-radius: 75%"
+                      height="77px"
+                    />
+                  </a>
+                </div>
+                <div class="col-2">
+                  <br />
+
+                  <a
+                    href="https://market.immutable.com/assets?collection=0x5f32923175e13713242b3ddd632bdee82ab5f509"
+                  >
+                    <img
+                      src="../../assets/imxlogo.PNG"
+                      alt="etherscan"
+                      style="border-radius: 75%"
+                      height="75px"
+                      width="75px"
+                    />
+                  </a>
+                </div>
+                <div class="col-2">
+                  <br />
+                  <a href="https://tokentrove.com/collection/MoodyKrows">
+                    <img
+                      src="../../assets/tokentrovelogo.PNG"
+                      alt="etherscan"
+                      style="border-radius: 75%"
+                      height="75px"
+                      width="75px"
+                    />
+                  </a>
+                </div>
+                <div class="col-2">
+                  <br />
+                  <a
+                    href="https://imxrarity.io/collection/0x5f32923175e13713242b3ddd632bdee82ab5f509"
+                  >
+                    <img
+                      src="../../assets/imxRarity.PNG"
+                      alt="etherscan"
+                      style="border-radius: 75%"
+                      height="75px"
+                      width="75px"
+                    />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- OG KROW CARD -->
+
+        <!-- BABY KROW CARD -->
+        <div class="col-xl-3">
+          <div class="card" style="background-color: white; max-width: 75%">
+            <div class="center-div">
+              <img
+                class="card-img-top"
+                src="../../assets/babykrowcollection.PNG"
+                alt="krow baby"
+                width="350"
+                height="450"
+                style="border-radius: 50%"
+              />
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Baby Collection</h5>
+              <p class="card-text">
+                Airdropped to Krow holders at a 2:1 ratio. A Cute collection of
+                baby krows ready to grow up and find a forever home!
+              </p>
+              <hr />
+
+              <div
+                class="row"
+                style="
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                "
+              >
+                <div class="col-2">
+                  <br />
+                  <a
+                    href="https://etherscan.io/address/0xd595e82f016843bb15e469eedc357fda27a71a6b"
+                  >
+                    <img
+                      src="../../assets/etherscan.PNG"
+                      alt="etherscan"
+                      style="border-radius: 75%"
+                      height="77px"
+                    />
+                  </a>
+                </div>
+                <div class="col-2">
+                  <br />
+
+                  <a
+                    href="https://market.immutable.com/assets?collection=0xd595e82f016843bb15e469eedc357fda27a71a6b"
+                  >
+                    <img
+                      src="../../assets/imxlogo.PNG"
+                      alt="etherscan"
+                      style="border-radius: 75%"
+                      height="75px"
+                      width="75px"
+                    />
+                  </a>
+                </div>
+
+                <div class="col-2">
+                  <br />
+                  <a
+                    href="https://imxrarity.io/collection/0xd595e82f016843bb15e469eedc357fda27a71a6b"
+                  >
+                    <img
+                      src="../../assets/imxRarity.PNG"
+                      alt="etherscan"
+                      style="border-radius: 75%"
+                      height="75px"
+                      width="75px"
+                    />
+                  </a>
+                </div>
+                <!-- BABY KROW CARD -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
